@@ -2,6 +2,7 @@ import { useState } from "react"
 import {
     createTask,
     Filter,
+    isBlankTitle,
     openCount,
     renameTask,
     seedTasks,
@@ -29,8 +30,10 @@ export function App() {
     function rename(task: Task) {
         const title = window.prompt("Название", task.title)
         if (title == null) return
-        // Старая форма сохраняла название без проверки; этот путь оставлен
-        // ради редактирования в один шаг, и issue #7 именно про него.
+        if (isBlankTitle(title)) {
+            window.alert("Название не может быть пустым")
+            return
+        }
         setTasks(renameTask(tasks, task.id, title))
     }
 

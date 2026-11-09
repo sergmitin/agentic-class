@@ -16,9 +16,12 @@ export const seedTasks: Task[] = [
     { id: 3, title: "   ", done: false },
 ]
 
-/** Доска считает название без непробельных символов отсутствующим названием. */
+/** Доска считает название без непробельных символов отсутствующим названием.
+ *  Удаляем обычные пробелы, табуляцию, неразрывный пробел U+00A0 и
+ *  нулевой пробел U+200B перед проверкой.
+ */
 export function isBlankTitle(title: string): boolean {
-    return title.trim().length === 0
+    return title.replace(/[\u00A0\u200B]/g, " ").trim().length === 0
 }
 
 /**
@@ -31,22 +34,25 @@ export function createTask(id: number, title: string): Task | undefined {
     return { id, title: trimmed, done: false }
 }
 
-/** Переименование существующей задачи. Проверки здесь нет — issue #7. */
+/** Переименование существующей задачи.
+ *  Обрезает пробелы. Если результат пустой — возвращает массив без изменений.
+ */
 export function renameTask(tasks: Task[], id: number, title: string): Task[] {
-    return tasks.map((task) => (task.id === id ? { ...task, title } : task))
+    const trimmed = title.replace(/[\u00A0\u200B]/g, " ").trim()
+    if (trimmed.length === 0) return tasks
+    return tasks.map((task) => (task.id === id ? { ...task, title: trimmed } : task))
 }
 
 export function visibleTasks(tasks: Task[], filter: Filter): Task[] {
-    if (filter === "open") return tasks.filter((task) => !task.done)
-    if (filter === "done") return tasks.filter((task) => task.done)
-    return tasks
+    const nonBlank = tasks.filter((task) => !isBlankTitle(task.title))
+    if (filter === "open") return nonBlank.filter((task) => !task.done)
+    if (filter === "done") return nonBlank.filter((task) => task.done)
+    return nonBlank
 }
 
 /**
- * Счётчик в шапке. Он считает все открытые строки — включая унаследованную
- * пустую, поэтому показывает 2, хотя на доске одна настоящая открытая задача
- * и одна пустая строка.
+ * Счётчик в шапке. Считает только открытые задачи с непустым названием.
  */
 export function openCount(tasks: Task[]): number {
-    return tasks.filter((task) => !task.done).length
+    return tasks.filter((task) => !task.done && !isBlankTitle(task.title)).length
 }

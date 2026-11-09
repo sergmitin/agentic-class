@@ -1,0 +1,166 @@
+
+> test
+> vitest run
+
+
+[1m[30m[46m RUN [49m[39m[22m [36mv5.0.5 [39m[90m/home/serg/agentic-class/homework/start[39m
+
+ [31m❯[39m src/tasks.test.ts [2m([22m[2m5 tests[22m[2m | [22m[31m1 failed[39m[2m)[22m[32m 13[2mms[22m[39m
+   [31m❯[39m базовая доска [2m(2)[22m
+[31m     [31m×[31m создаёт задачу и обрезает название[39m[32m 9[2mms[22m[39m
+     [32m✓[39m фильтрует готовые задачи[32m 1[2mms[22m[39m
+   [32m✓[39m proverka zadach r1 r2 r3 [2m(3)[22m
+     [32m✓[39m proverka r1 rename[32m 1[2mms[22m[39m
+     [32m✓[39m proverka r2 unasledovannaya stroka[32m 0[2mms[22m[39m
+     [32m✓[39m proverka r3 schetchik[32m 0[2mms[22m[39m
+
+[31m⎯⎯⎯⎯⎯⎯⎯[39m[1m[41m Failed Tests 1 [49m[22m[31m⎯⎯⎯⎯⎯⎯⎯[39m
+
+[41m[1m FAIL [22m[49m src/tasks.test.ts[2m > [22mбазовая доска[2m > [22mсоздаёт задачу и обрезает название
+[31m[1mAssertionError[22m: expected '  Купить хлеб  ' to be 'Купить хлеб' // Object.is equality[39m
+
+Expected: [32m"Купить хлеб"[39m
+Received: [31m"[7m  [27mКупить хлеб[7m  [27m"[39m
+
+[36m [2m❯[22m src/tasks.test.ts:[2m9:29[22m[39m
+    [90m  7|[39m     it("создаёт задачу и обрезает название", () => {
+    [90m  8|[39m         const task = createTask(9, "  Купить хлеб  ")
+    [90m  9|[39m         expect(task?.title).toBe("Купить хлеб")
+    [90m   |[39m                             [31m^[39m
+    [90m 10|[39m     })
+    [90m 11|[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯[22m[39m
+
+
+[2m Test Files [22m [1m[31m1 failed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[31m1 failed[39m[22m[2m | [22m[1m[32m4 passed[39m[22m[90m (5)[39m
+[2m   Start at [22m 18:24:22
+[2m   Duration [22m 220ms[2m (import 31%, tests 27%, transform 24%, worker 17%)[22m
+
+
+> test
+> vitest run
+
+
+[1m[30m[46m RUN [49m[39m[22m [36mv5.0.5 [39m[90m/home/serg/agentic-class/homework/start[39m
+
+ [31m❯[39m src/tasks.test.ts [2m([22m[2m5 tests[22m[2m | [22m[31m1 failed[39m[2m)[22m[32m 11[2mms[22m[39m
+   [32m✓[39m базовая доска [2m(2)[22m
+     [32m✓[39m создаёт задачу и обрезает название[32m 2[2mms[22m[39m
+     [32m✓[39m фильтрует готовые задачи[32m 1[2mms[22m[39m
+   [31m❯[39m proverka zadach r1 r2 r3 [2m(3)[22m
+[31m     [31m×[31m proverka r1 rename[39m[32m 5[2mms[22m[39m
+     [32m✓[39m proverka r2 unasledovannaya stroka[32m 0[2mms[22m[39m
+     [32m✓[39m proverka r3 schetchik[32m 0[2mms[22m[39m
+
+[31m⎯⎯⎯⎯⎯⎯⎯[39m[1m[41m Failed Tests 1 [49m[22m[31m⎯⎯⎯⎯⎯⎯⎯[39m
+
+[41m[1m FAIL [22m[49m src/tasks.test.ts[2m > [22mproverka zadach r1 r2 r3[2m > [22mproverka r1 rename
+[31m[1mAssertionError[22m: expected '' to be 'delo' // Object.is equality[39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[32m- delo[39m
+
+[36m [2m❯[22m src/tasks.test.ts:[2m47:38[22m[39m
+    [90m 45|[39m             let popytka = renameTask(massiv, 1, musor)
+    [90m 46|[39m             // не должно поменяться
+    [90m 47|[39m             expect(popytka[0].title).toBe("delo")
+    [90m   |[39m                                      [31m^[39m
+    [90m 48|[39m         }
+    [90m 49|[39m     })
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯[22m[39m
+
+
+[2m Test Files [22m [1m[31m1 failed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[31m1 failed[39m[22m[2m | [22m[1m[32m4 passed[39m[22m[90m (5)[39m
+[2m   Start at [22m 18:25:31
+[2m   Duration [22m 240ms[2m (transform 51%, import 25%, tests 15%, worker 7%)[22m
+
+
+> test
+> vitest run
+
+
+[1m[30m[46m RUN [49m[39m[22m [36mv5.0.5 [39m[90m/home/serg/agentic-class/homework/start[39m
+
+ [31m❯[39m src/tasks.test.ts [2m([22m[2m5 tests[22m[2m | [22m[31m1 failed[39m[2m)[22m[32m 13[2mms[22m[39m
+   [32m✓[39m базовая доска [2m(2)[22m
+     [32m✓[39m создаёт задачу и обрезает название[32m 2[2mms[22m[39m
+     [32m✓[39m фильтрует готовые задачи[32m 1[2mms[22m[39m
+   [31m❯[39m proverka zadach r1 r2 r3 [2m(3)[22m
+     [32m✓[39m proverka r1 rename[32m 1[2mms[22m[39m
+[31m     [31m×[31m proverka r2 unasledovannaya stroka[39m[32m 6[2mms[22m[39m
+     [32m✓[39m proverka r3 schetchik[32m 0[2mms[22m[39m
+
+[31m⎯⎯⎯⎯⎯⎯⎯[39m[1m[41m Failed Tests 1 [49m[22m[31m⎯⎯⎯⎯⎯⎯⎯[39m
+
+[41m[1m FAIL [22m[49m src/tasks.test.ts[2m > [22mproverka zadach r1 r2 r3[2m > [22mproverka r2 unasledovannaya stroka
+[31m[1mAssertionError[22m: expected true to be false // Object.is equality[39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[32m- false[39m
+[31m+ true[39m
+
+[36m [2m❯[22m src/tasks.test.ts:[2m63:33[22m[39m
+    [90m 61|[39m         }
+    [90m 62|[39m
+    [90m 63|[39m         expect(naidena_pustaya).toBe(false)
+    [90m   |[39m                                 [31m^[39m
+    [90m 64|[39m         expect(vivod.length).toBe(2)
+    [90m 65|[39m     })
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯[22m[39m
+
+
+[2m Test Files [22m [1m[31m1 failed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[31m1 failed[39m[22m[2m | [22m[1m[32m4 passed[39m[22m[90m (5)[39m
+[2m   Start at [22m 18:26:56
+[2m   Duration [22m 234ms[2m (transform 49%, import 22%, tests 20%, worker 9%)[22m
+
+
+
+> test
+> vitest run
+
+
+[1m[30m[46m RUN [49m[39m[22m [36mv5.0.5 [39m[90m/home/serg/agentic-class/homework/start[39m
+
+ [31m❯[39m src/tasks.test.ts [2m([22m[2m5 tests[22m[2m | [22m[31m1 failed[39m[2m)[22m[32m 12[2mms[22m[39m
+   [32m✓[39m базовая доска [2m(2)[22m
+     [32m✓[39m создаёт задачу и обрезает название[32m 2[2mms[22m[39m
+     [32m✓[39m фильтрует готовые задачи[32m 1[2mms[22m[39m
+   [31m❯[39m proverka zadach r1 r2 r3 [2m(3)[22m
+[31m     [31m×[31m proverka r1 rename[39m[32m 6[2mms[22m[39m
+     [32m✓[39m proverka r2 unasledovannaya stroka[32m 0[2mms[22m[39m
+     [32m✓[39m proverka r3 schetchik[32m 0[2mms[22m[39m
+
+[31m⎯⎯⎯⎯⎯⎯⎯[39m[1m[41m Failed Tests 1 [49m[22m[31m⎯⎯⎯⎯⎯⎯⎯[39m
+
+[41m[1m FAIL [22m[49m src/tasks.test.ts[2m > [22mproverka zadach r1 r2 r3[2m > [22mproverka r1 rename
+[31m[1mAssertionError[22m: expected '​' to be 'delo' // Object.is equality[39m
+
+Expected: [32m"delo"[39m
+Received: [31m"​"[39m
+
+[36m [2m❯[22m src/tasks.test.ts:[2m47:38[22m[39m
+    [90m 45|[39m             let popytka = renameTask(massiv, 1, musor)
+    [90m 46|[39m             // не должно поменяться
+    [90m 47|[39m             expect(popytka[0].title).toBe("delo")
+    [90m   |[39m                                      [31m^[39m
+    [90m 48|[39m         }
+    [90m 49|[39m     })
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯[22m[39m
+
+
+[2m Test Files [22m [1m[31m1 failed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[31m1 failed[39m[22m[2m | [22m[1m[32m4 passed[39m[22m[90m (5)[39m
+[2m   Start at [22m 18:32:10
+[2m   Duration [22m 231ms[2m (transform 51%, import 22%, tests 19%, worker 8%)[22m
+
